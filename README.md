@@ -106,3 +106,99 @@ Key Steps:
   Load the dataset into the required .mat file format with appropriate variable names.
   Adjust script parameters (e.g., number of neurons, number of iterations) as needed.
   Run the script to analyze the effect of PCA-based dimensionality reduction on classification accuracy.
+
+## ANN_HV_vs_MO_Build_ANN_FFS.m
+This script trains and evaluates a neural network model on a dataset using multiple evaluation metrics such as accuracy, sensitivity, specificity, F1 score, and AUC. It performs several trials to assess the robustness and generalization of the model across different splits (train, validation, and test). Additionally, it generates ROC curves for each class and calculates the AUC for each class across trials. The code also outputs average performance metrics across all trials.
+
+Key steps:
+
+- Data Loading and Preparation:
+  The script begins by loading the dataset DatasetHVvsMO_depurato.mat.
+  Relevant variables representing physiological and proxy measurements are extracted and concatenated into a feature matrix X.
+  Rows containing missing values (NaN) are identified and removed from both the feature matrix X and the target vector Y.
+
+- Feature Selection:
+  The script uses a subset of features (Var_5, Slope_1, and Proxy_3) for training the neural network model (derived from the FFS).
+  
+- Initialization for Metrics and Trials:
+  Arrays are initialized to accumulate confusion matrices and performance metrics for all trials (train, validation, test, and overall).
+  roc_data stores the ROC curve data (False Positive Rate and True Positive Rate) for each class, while auc_values stores the AUC values for each trial.
+
+  - Neural Network Training and Evaluation:
+  The model is trained multiple times (100 trials by default). For each trial:
+  The neural network (patternnet) is initialized with a hidden layer size of 50 neurons.
+  The data is split into training (65%), validation (20%), and test (15%) sets.
+  The network is trained on the selected features with a softmax output layer for classification.
+  The model is evaluated on training, validation, test, and overall data, and the confusion matrices are computed.
+  The following performance metrics are calculated for each dataset (train, validation, test, and overall):
+  Accuracy: The proportion of correct predictions.
+  Sensitivity (Recall): The proportion of actual positives correctly identified.
+  Specificity: The proportion of actual negatives correctly identified.
+  Precision: The proportion of true positives out of all predicted positives.
+  F1 Score: The harmonic mean of precision and sensitivity.
+
+- ROC Curve and AUC Calculation:
+  For each class, the ROC curve is computed using the perfcurve function. The AUC value is calculated to summarize the ROC curve performance.
+  
+- Metric Aggregation (after all trials are completed):
+  The mean and standard deviation of the AUC values across trials are computed and displayed for each class.
+  The average of the performance metrics (accuracy, sensitivity, specificity, F1 score) is calculated for each dataset (train, validation, test, overall).
+  The variance of the metrics is also calculated for each dataset.
+
+- Results and Visualization:
+  The average ROC curve for each class is plotted, showing the False Positive Rate (FPR) vs. True Positive Rate (TPR) with the corresponding AUC value.
+  The performance metrics (mean and variance) for training, validation, and test sets are displayed in the command window.
+  
+- Outputs:
+  Average AUC per class: Printed to the console for each class with standard deviation.
+  ROC Curves: Plotted for each class, showing the average ROC curve across all trials.
+  Performance Metrics: Accuracy, Sensitivity, Specificity, and F1 Score for training, validation, test, and overall datasets.
+  Variance of the metrics for each dataset.
+
+  ## ANN_HV_vs_MO_Build_ANN_PCA.m
+This script trains and evaluates a neural network model on a dataset using multiple evaluation metrics such as accuracy, sensitivity, specificity, F1 score, and AUC. It performs several trials to assess the robustness and generalization of the model across different splits (train, validation, and test). Additionally, it generates ROC curves for each class and calculates the AUC for each class across trials. The code also outputs average performance metrics across all trials.
+
+Key steps:
+
+- Data Loading and Preparation:
+  The script begins by loading the dataset DatasetHVvsMO_depurato.mat.
+  Relevant variables representing physiological and proxy measurements are extracted and concatenated into a feature matrix X.
+  Rows containing missing values (NaN) are identified and removed from both the feature matrix X and the target vector Y.
+
+- Feature Selection:
+  The script uses the first four components of the score variable (results of the PCA) for training the neural network model.
+  
+- Initialization for Metrics and Trials:
+  Arrays are initialized to accumulate confusion matrices and performance metrics for all trials (train, validation, test, and overall).
+  roc_data stores the ROC curve data (False Positive Rate and True Positive Rate) for each class, while auc_values stores the AUC values for each trial.
+
+  - Neural Network Training and Evaluation:
+  The model is trained multiple times (100 trials by default). For each trial:
+  The neural network (patternnet) is initialized with a hidden layer size of 50 neurons.
+  The data is split into training (65%), validation (20%), and test (15%) sets.
+  The network is trained on the selected features with a softmax output layer for classification.
+  The model is evaluated on training, validation, test, and overall data, and the confusion matrices are computed.
+  The following performance metrics are calculated for each dataset (train, validation, test, and overall):
+  Accuracy: The proportion of correct predictions.
+  Sensitivity (Recall): The proportion of actual positives correctly identified.
+  Specificity: The proportion of actual negatives correctly identified.
+  Precision: The proportion of true positives out of all predicted positives.
+  F1 Score: The harmonic mean of precision and sensitivity.
+
+- ROC Curve and AUC Calculation:
+  For each class, the ROC curve is computed using the perfcurve function. The AUC value is calculated to summarize the ROC curve performance.
+  
+- Metric Aggregation (after all trials are completed):
+  The mean and standard deviation of the AUC values across trials are computed and displayed for each class.
+  The average of the performance metrics (accuracy, sensitivity, specificity, F1 score) is calculated for each dataset (train, validation, test, overall).
+  The variance of the metrics is also calculated for each dataset.
+
+- Results and Visualization:
+  The average ROC curve for each class is plotted, showing the False Positive Rate (FPR) vs. True Positive Rate (TPR) with the corresponding AUC value.
+  The performance metrics (mean and variance) for training, validation, and test sets are displayed in the command window.
+  
+- Outputs:
+  Average AUC per class: Printed to the console for each class with standard deviation.
+  ROC Curves: Plotted for each class, showing the average ROC curve across all trials.
+  Performance Metrics: Accuracy, Sensitivity, Specificity, and F1 Score for training, validation, test, and overall datasets.
+  Variance of the metrics for each dataset.
