@@ -22,36 +22,46 @@ This repository contains four scripts. Two of them focus on feature selection or
 
 
 # Code Operational View
-
-- ANN_HV_vs_MO_Perform_FFS.m:
+## ANN_HV_vs_MO_Perform_FFS.m
 This script implements a Forward Feature Selection (FFS) algorithm to identify the most relevant features for training and testing an Artificial Neural Network (ANN). The code is designed to analyze a dataset of healthy versus migraine subjects, determining which features contribute the most to the classification task. Below is an operational breakdown of the script:
 
 Key Steps:
-Data Loading and Preparation: The script begins by loading the dataset DatasetHVvsMO_depurato.mat. 
-Specific variables are extracted and concatenated into a feature matrix X.
-Rows with missing data (NaN values) are identified and removed from both the feature matrix X and the target vector Y.
 
-Feature Normalization: Features in X are normalized to have zero mean and unit standard deviation.
+- Data Loading and Preparation:
+  The script begins by loading the dataset DatasetHVvsMO_depurato.mat. 
+  Specific variables are extracted and concatenated into a feature matrix X.
+  Rows with missing data (NaN values) are identified and removed from both the feature matrix X and the target vector Y.
 
-Target Vector Preprocessing: The categorical target vector Y is converted into numeric labels and subsequently into a categorical format suitable for classification.
+- Feature Normalization:
+  Features in X are normalized to have zero mean and unit standard deviation.
 
-Feature Selection with ANN: The script performs Forward Feature Selection 100 iterations (reduced to 2 in the provided example for brevity).
+- Target Vector Preprocessing:
+  The categorical target vector Y is converted into numeric labels and subsequently into a categorical format suitable for classification.
 
-For each iteration: Features are selected sequentially based on their contribution to classification accuracy.
-A subset of features is evaluated by training and testing a neural network.
-The feature that results in the highest average classification accuracy across 10 repetitions is selected.
-The process continues until no significant improvement is observed or all features are evaluated.
+- Feature Selection with ANN:
+  The script performs Forward Feature Selection 100 iterations (reduced to 2 in the provided example for brevity).
 
-Neural Network Training and Testing: A pattern recognition neural network (patternnet) with a single hidden layer (50 neurons) is trained using a stratified train-test split (cvpartition with 70% training, 30% testing).
-The network performance is evaluated based on classification accuracy.
+- For each iteration:
+  Features are selected sequentially based on their contribution to classification accuracy.
+  A subset of features is evaluated by training and testing a neural network.
+  The feature that results in the highest average classification accuracy across 10 repetitions is selected.
+  The process continues until no significant improvement is observed or all features are evaluated.
 
-Feature Selection Frequency: A frequency counter tracks how often each feature is selected across the iterations.
-The final selected features are used to train a model, and their indices are recorded.
+- Neural Network Training and Testing:
+  A pattern recognition neural network (patternnet) with a single hidden layer (50 neurons) is trained using a stratified train-test split (cvpartition with 70% training, 30% testing).
+  The network performance is evaluated based on classification accuracy.
 
-Visualization: A bar plot is generated to visualize the selection frequency of each feature across the iterations.
+- Feature Selection Frequency:
+  A frequency counter tracks how often each feature is selected across the iterations.
+  The final selected features are used to train a model, and their indices are recorded.
 
-Outputs: Feature Selection Frequency: A bar chart shows how often each feature was selected during the FFS process, indicating the most relevant features for the ANN.
+- Visualization:
+  A bar plot is generated to visualize the selection frequency of each feature across the iterations.
 
-Usage: Load your dataset into the required .mat file format with appropriate variable names.
-Adjust the script parameters (e.g., hidden layer size, number of iterations, etc.) as needed.
-Run the script to identify critical features and visualize their selection frequency.
+- Outputs:
+  Feature Selection Frequency: A bar chart shows how often each feature was selected during the FFS process, indicating the most relevant features for the ANN.
+
+- Usage:
+  Load your dataset into the required .mat file format with appropriate variable names.
+  Adjust the script parameters (e.g., hidden layer size, number of iterations, etc.) as needed.
+  Run the script to identify critical features and visualize their selection frequency.
