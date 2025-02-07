@@ -108,7 +108,7 @@ Key Steps:
   Run the script to analyze the effect of PCA-based dimensionality reduction on classification accuracy.
 
 ## ANN_HV_vs_MO_Build_ANN_FFS.m
-This script trains and evaluates a neural network model on a dataset using multiple evaluation metrics such as accuracy, sensitivity, specificity, F1 score, and AUC. It performs several trials to assess the robustness and generalization of the model across different splits (train, validation, and test). Additionally, it generates ROC curves for each class and calculates the AUC for each class across trials. The code also outputs average performance metrics across all trials.
+This script trains and evaluates a neural network model on a dataset (inputs identified by FFS) using multiple evaluation metrics such as accuracy, sensitivity, specificity, F1 score, and AUC. It performs several trials to assess the robustness and generalization of the model across different splits (train, validation, and test). Additionally, it generates ROC curves for each class and calculates the AUC for each class across trials. The code also outputs average performance metrics across all trials.
 
 Key steps:
 
@@ -156,7 +156,7 @@ Key steps:
   Variance of the metrics for each dataset.
 
   ## ANN_HV_vs_MO_Build_ANN_PCA.m
-This script trains and evaluates a neural network model on a dataset using multiple evaluation metrics such as accuracy, sensitivity, specificity, F1 score, and AUC. It performs several trials to assess the robustness and generalization of the model across different splits (train, validation, and test). Additionally, it generates ROC curves for each class and calculates the AUC for each class across trials. The code also outputs average performance metrics across all trials.
+This script trains and evaluates a neural network model on a dataset (inputs identified by PCA) using multiple evaluation metrics such as accuracy, sensitivity, specificity, F1 score, and AUC. It performs several trials to assess the robustness and generalization of the model across different splits (train, validation, and test). Additionally, it generates ROC curves for each class and calculates the AUC for each class across trials. The code also outputs average performance metrics across all trials.
 
 Key steps:
 
