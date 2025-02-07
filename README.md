@@ -19,4 +19,4 @@ The dataset required for running this script is not included in the repository. 
 
 # Code Overview
 The script consists of the following main components:
-Two scripts are present in this repository. One is using the feed forward feature selection as reference method for selecting critical features, the second one the principal component analysis technique is implemented to reduece the dataset dimensionality. 
+Four scripts are present in this repository. One is using the feed forward feature selection as reference method for selecting critical features, the second one the principal component analysis technique is implemented to reduece the dataset dimensionality. 
