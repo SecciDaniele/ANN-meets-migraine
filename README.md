@@ -124,7 +124,7 @@ Key steps:
   Arrays are initialized to accumulate confusion matrices and performance metrics for all trials (train, validation, test, and overall).
   roc_data stores the ROC curve data (False Positive Rate and True Positive Rate) for each class, while auc_values stores the AUC values for each trial.
 
-  - Neural Network Training and Evaluation:
+- Neural Network Training and Evaluation:
   The model is trained multiple times (100 trials by default). For each trial:
   The neural network (patternnet) is initialized with a hidden layer size of 50 neurons.
   The data is split into training (65%), validation (20%), and test (15%) sets.
@@ -172,7 +172,7 @@ Key steps:
   Arrays are initialized to accumulate confusion matrices and performance metrics for all trials (train, validation, test, and overall).
   roc_data stores the ROC curve data (False Positive Rate and True Positive Rate) for each class, while auc_values stores the AUC values for each trial.
 
-  - Neural Network Training and Evaluation:
+- Neural Network Training and Evaluation:
   The model is trained multiple times (100 trials by default). For each trial:
   The neural network (patternnet) is initialized with a hidden layer size of 50 neurons.
   The data is split into training (65%), validation (20%), and test (15%) sets.
