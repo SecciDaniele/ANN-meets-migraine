@@ -65,3 +65,44 @@ Key Steps:
   Load your dataset into the required .mat file format with appropriate variable names.
   Adjust the script parameters (e.g., hidden layer size, number of iterations, etc.) as needed.
   Run the script to identify critical features and visualize their selection frequency.
+
+## ANN_HV_vs_MO_Perform_PCA.m
+This script performs classification using Principal Component Analysis (PCA) for dimensionality reduction and a feedforward Artificial Neural Network (ANN). The goal is to assess the impact of reducing the feature space on classification accuracy for a dataset of healthy versus migraine subjects. Below is an operational breakdown of the script:
+
+Key Steps:
+
+- Data Loading and Preparation:
+  The script begins by loading the dataset DatasetHVvsMO_depurato.mat.
+  Relevant variables representing physiological and proxy measurements are extracted and concatenated into a feature matrix X.
+  Rows containing missing values (NaN) are identified and removed from both the feature matrix X and the target vector Y.
+  
+- Principal Component Analysis (PCA):
+  PCA is applied to the feature matrix X to reduce the dimensionality of the dataset.
+  Principal components are computed, and the variance explained by each component is recorded.
+  The PCA-transformed data (score) is used for training and testing the ANN.
+  
+- Neural Network Training and Validation:
+  The classification process is performed iteratively to evaluate the impact of the number of principal components:
+  For each number of components (from 1 to the total number available), the dataset is split into training and testing subsets using a holdout method (80% training, 20% testing).
+  A feedforward neural network (patternnet) with a single hidden layer of 50 neurons is trained using the PCA-reduced data.
+  The network's performance is tested on the held-out test set, and the classification accuracy is recorded.
+
+- Repeated Training:
+  Each configuration (number of principal components) is repeated 100 times to capture variability in performance.
+  For each number of components, metrics such as mean accuracy, minimum accuracy, and maximum accuracy are computed.
+
+- Performance Visualization:
+  A plot is generated to visualize the relationship between the number of principal components and classification accuracy:
+  X-axis: Number of principal components.
+  Y-axis: Classification accuracy.
+  Blue Line: Mean classification accuracy across all iterations.
+  Red Dashed Lines: Minimum and maximum classification accuracy.
+
+- Outputs:
+  Accuracy Plot: A figure illustrating the effect of varying the number of principal components on classification accuracy.
+  Performance Metrics: Mean, minimum, and maximum classification accuracy values for each number of components.
+
+- Usage:
+  Load the dataset into the required .mat file format with appropriate variable names.
+  Adjust script parameters (e.g., number of neurons, number of iterations) as needed.
+  Run the script to analyze the effect of PCA-based dimensionality reduction on classification accuracy.
